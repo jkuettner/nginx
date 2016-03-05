@@ -31,5 +31,5 @@ docker run -d \
     -v /path/to/your/webroot:/www \
     -v /path/to/your/nginx/configs:/nginx/conf.d \
     -v /path/to/your/ssl/certificates:/nginx/ssl \
-    jkuettner/docker
+    jkuettner/nginx
 ```
