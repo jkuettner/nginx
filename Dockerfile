@@ -22,11 +22,13 @@ RUN apt-get update \
 
 ADD nginx.conf /nginx/nginx.conf
 
-RUN chown nginx:nginx -R /nginx /var/cache/nginx \
+RUN cp /etc/nginx/fastcgi_params /nginx/
+
+RUN chown nginx:nginx -R /nginx /var/cache/nginx /var/log/nginx \
     && chmod 775 /nginx
 
 VOLUME ["/nginx/conf.d", "/nginx/ssl", "/www"]
 
 USER nginx
 
-CMD ["nginx", "-c", "/nginx/nginx.conf"]
+CMD ["nginx", "-p", "/nginx/", "-c", "/nginx/nginx.conf"]
