@@ -21,12 +21,11 @@ RUN apt-get update \
     && usermod -d /nginx -s /bin/bash nginx
 
 ADD nginx.conf /nginx/nginx.conf
-ADD sites/ /nginx/conf.d/
 
 RUN chown nginx:nginx -R /nginx /var/cache/nginx \
     && chmod 775 /nginx
 
-VOLUME ["/nginx/ssl", "/www"]
+VOLUME ["/nginx/conf.d", "/nginx/ssl", "/www"]
 
 USER nginx
 
