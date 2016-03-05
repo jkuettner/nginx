@@ -18,7 +18,7 @@ RUN echo "deb http://nginx.org/packages/debian/ jessie nginx" > /etc/apt/sources
 RUN apt-get update \
     && apt-get install -y nginx \
     && apt-get clean all \
-    && usermod -d /nginx -s /bin/bash nginx
+    && usermod -d /nginx -u 10000 -s /bin/bash nginx
 
 ADD nginx.conf /nginx/nginx.conf
 
